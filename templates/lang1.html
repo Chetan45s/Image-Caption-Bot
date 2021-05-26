@@ -1,0 +1,33 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+    <div class="main">
+        <div class="bot">
+        <div class="something">
+        <p>Input : {{ Input }}</p>
+        <br>
+        <p>Tokens : {{ Tokens }}</p>
+        <p>Tokens Error : {{ Tokens_error }}</p>
+        <br>
+        <p>AST : {{ AST }}</p>
+        <p>AST Error : {{ AST_error }}</p>
+        <br>
+        <p>Output : {{ Output }}</p>
+        <p>Output Error : {{ Output_error }}</p>
+        <br>
+        </div>
+        </div>
+    </div>
+    </body>
+</html>
