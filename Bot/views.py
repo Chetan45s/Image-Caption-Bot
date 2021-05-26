@@ -76,10 +76,10 @@ def bot(request):
         background.paste(img,(5,5,(width+5),(height+5)))
 
 
-        title_font = ImageFont.truetype('./model_weights/Pattaya-Regular.ttf',20)
+        title_font = ImageFont.truetype('./model_weights\Inconsolata-VariableFont_wdth,wght.ttf',20)
 
         image_editable = ImageDraw.Draw(background)
-        image_editable.text((30,height+10), caption, font=title_font,fill="black")
+        image_editable.text((30,height+10), caption, font=title_font, fill="black")
 
         img = background
 

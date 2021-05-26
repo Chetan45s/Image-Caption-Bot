@@ -10,22 +10,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     </head>
     <body>
     <div class="main">
+    <div id="logo">
+        <img src="{% static 'css\clg_log.jpg' %}" width="225" height="55"/>
+    </div>
+        <h1 class="heading">< Image Caption Bot /></h1>
         <div class="bot">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Upload Image Here</legend>
-                    {{ bot_form|crispy }}
-                <fieldset>
-                <br>
-                    <div class="form-group">
-                        <button class="btn btn-dark" type="submit">Upload</button>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                        <legend class="border-bottom mb-4">Upload Image Here</legend>
+                        <img id="blah" src="{% static 'css\blank.png' %}" alt="your image" width="460" height="345"/>
+                        <br>
+                        <input type="file" name="image_value" onchange="readURL(this);" required id="id_image_value">
+                    <br>
+                    <div class="twoToneCenter">
+    
+                        <button class="twoToneButton" type="submit">Upload</button>
+                        
                     </div>
+                        {% comment %} <div class="form-group">
+                            <button class="btn btn-dark" type="submit">Upload</button>
+                        </div> {% endcomment %}
             </form>
         </div>
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(460)
+                        .height(345);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(function(){
+            
+            var twoToneButton = document.querySelector('.twoToneButton');
+            
+            twoToneButton.addEventListener("click", function() {
+                twoToneButton.innerHTML = "Generating Caption";
+                twoToneButton.classList.add('spinning');
+                
+            setTimeout( 
+                    function  (){  
+                        twoToneButton.classList.remove('spinning');
+                        twoToneButton.innerHTML = "Upload";
+                        
+                    }, 12000);
+            }, false);
+            
+        });
+    </script>
     </body>
 </html>

@@ -13,8 +13,14 @@
     </head>
     <body>
     <div class="main">
+        <div id="logo">
+        <img src="{% static 'css\clg_log.jpg' %}" width="225" height="55"/>
+    </div>
+        <h1 class="heading">< Image Caption Bot /></h1>
         <div class="bot">
-         <img src="{{ img_data }}">
+            <div class="output">
+                <img src="{{ img_data }}" width="460" height="345">
+            </div>
         </div>
     </div>
     </body>
