@@ -65,21 +65,28 @@ def bot(request):
     bot_form = BotForm()
     if request.method == 'POST':
         bot_form = BotForm(request.FILES,request.POST)
+
         image = request.FILES["image_value"]
         img = Image.open(image) 
         width,height = img.size
         encoded_image_2048 = encode_image(img)
+        
         caption = predict_caption(encoded_image_2048)
-
-
-        background = Image.new('RGBA',(width+10,height+int(height/9)),'white')
-        background.paste(img,(5,5,(width+5),(height+5)))
-
 
         title_font = ImageFont.truetype('./model_weights\Inconsolata-VariableFont_wdth,wght.ttf',20)
 
+
+        w,h = title_font.getsize(caption)
+
+        w = max(width,w)
+        background = Image.new('RGBA',(10+w,h+height+int(height/9)),'white')
+
+
+        background.paste(img,(5,5,(width+5),(height+5)))
         image_editable = ImageDraw.Draw(background)
-        image_editable.text((30,height+10), caption, font=title_font, fill="black")
+        image_editable.text((2,height+5), caption, font=title_font, fill="black")
+
+
 
         img = background
 
