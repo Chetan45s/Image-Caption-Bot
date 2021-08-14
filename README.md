@@ -1,5 +1,19 @@
 # Image-Caption-Bot
 
+## Description of the project
+
+
+Created a Deep Learning Model that Caption the Image with good
+accuracy using RNN,CNN,word2vec and Keras.
+
+In this project we worked on the flicker8k dataset and tried to train a deep learning model that can caption the image by itself. Further more we hosted
+the trained model using django and connect the model to the bot that can take a image as a input and output the image with captions on it.
+
+### Some sample captions that are generated
+1       	  | 2		| 	3             
+:-------------------------:|:-------------------------:|:------------------------:
+![](https://raw.githubusercontent.com/adityajn105/image-caption-bot/master/samples/sample1.png)  |  ![](https://raw.githubusercontent.com/adityajn105/image-caption-bot/master/samples/sample2.png)		| ![](https://raw.githubusercontent.com/adityajn105/image-caption-bot/master/samples/sample3.png) 
+
 ## Tech
 
 Image Caption Bot uses following technologies:
